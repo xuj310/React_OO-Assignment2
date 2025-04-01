@@ -1,0 +1,72 @@
+// Use of modules
+@use './colours' as colours;
+@use './components/layout/header' as *;
+@use './infoBox' as *;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  p, a {
+    font-size: 2em;
+    line-height: 1;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .app {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+
+  a:hover {
+    color: colours.$hovor-colour;
+  }
+
+  body {
+    background: var(--primary);
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 3.2em;
+    line-height: 2;
+    color: colours.$main-colour;
+  }
+
+  button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: colours.$background-colour;
+    cursor: pointer;
+    transition: border-color 0.25s;
+
+    .hover {
+      border-color: colours.$purple-colour;
+    }
+
+    .focus,
+    .focus-visible {
+      outline: 4px auto -webkit-focus-ring-color;
+    }
+  }
+
+  .mainContent {
+    margin: 1rem auto;
+    flex: 1;
+  }
+
+}

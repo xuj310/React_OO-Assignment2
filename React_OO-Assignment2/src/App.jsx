@@ -1,33 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Routes
+import { Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import NotFound from './NotFound';
+import { Navbar, Nav } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Search from './Search.jsx';
+import { useState } from 'react';
+import SearchButton from './components/layout/searchButton.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [query, setQuery] = useState('');
+  const [animeList, setAnimeList] = useState([]);
+
+  async function fetchAnime() {
+    try {
+      const response = await fetch(
+        `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=~${query}`
+      );
+      const returnData = await response.text();
+
+      // TODO: Handle when there are no results
+
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(returnData, 'application/xml');
+      const animeList = Array.from(xmlDoc.getElementsByTagName('anime')).map((anime) => {
+        const title = anime.getAttribute('name'); // Get the title 
+        const plotSummary = Array.from(anime.getElementsByTagName('info')).find(
+          (info) => info.getAttribute('type') === 'Plot Summary'
+        )?.textContent; // Get the Plot Summary
+
+        return { title, plotSummary };
+      });
+
+      setAnimeList(animeList);
+    } catch (err) {
+      // TODO
+    } finally {
+      // TODO
+    }
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Navbar bg='dark' variant='dark'>
+      <Container>
+          <Nav>
+              <Search className="headerItem" query={query} setQuery={setQuery} />
+              <div className="right-aligned">
+                <SearchButton fetchAnime={fetchAnime} className="headerItem"/>
+              </div>            
+          </Nav>
+      </Container>
+
+      </Navbar>
+        <Routes>
+          <Route path="/" element={<Home animeList={animeList} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
     </>
   )
 }
