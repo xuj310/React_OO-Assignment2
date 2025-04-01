@@ -1,19 +1,17 @@
-// The home/landing page
-
 import { Fragment } from 'react';
 import Container from 'react-bootstrap/Container';
-import AnimeList from './AnimeList';
+import AnimeItemFull from './AnimeItemFull';
 
-const Home = ({animeList, onSelectAnime}) => {
+const AnimeItemPage = ({anime}) => {
   return (
     <Fragment>
       <Container>
       <div className="box">
-          <AnimeList animeList={animeList} onSelectAnime={onSelectAnime} />
+          <AnimeItemFull anime={anime} />
           </div>
       </Container>
     </Fragment>
   )
 }
 
-export default Home
+export default AnimeItemPage
