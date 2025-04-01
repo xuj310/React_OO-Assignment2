@@ -29,8 +29,11 @@ function App() {
         const plotSummary = Array.from(anime.getElementsByTagName('info')).find(
           (info) => info.getAttribute('type') === 'Plot Summary'
         )?.textContent; // Get the Plot Summary
+        const coverImage = Array.from(anime.getElementsByTagName('info')).find(
+          (info) => info.getAttribute('type') === 'Picture'
+        )?.getAttribute('src'); // Get the cover image
 
-        return { title, plotSummary };
+        return { title, plotSummary, coverImage };
       });
 
       setAnimeList(animeList);
