@@ -1,13 +1,15 @@
 // Routes
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Home from './Home';
 import NotFound from './NotFound';
 import { Navbar, Nav } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Search from './Search.jsx';
 import { useState } from 'react';
-import SearchButton from './components/layout/searchButton.jsx';
+import SearchButton from './components/layout/SearchButton.jsx';
+import GoToFavsButton from './components/layout/GoToFavsButton.jsx';
 import AnimeItemPage from './AnimeItemPage.jsx';
+import Favorites from './Favorites.jsx';
 
 function App() {
 
@@ -16,16 +18,32 @@ function App() {
   const [currentlySelectedAnime, setSelectedAnime] = useState();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   function selectedAnime(anime) {
     setSelectedAnime(anime);
     navigate('/AnimeItemPage');
   }
 
+  const displayFavAnime = () => {
+    // Retrieve existing favorites from localStorage
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [' '];
+    setAnimeList(favorites);
+    navigate('/');
+}
+
   async function fetchAnime() {
+
+    if (location.pathname != '/')
+    {
+      navigate('/');
+    }
+
+    setAnimeList([])
+
     try {
       const response = await fetch(
-        `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=~${query}`
+        `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=~${query}`, {credentials: "omit"}
       );
       const returnData = await response.text();
 
@@ -63,6 +81,7 @@ function App() {
           <Nav>
               <Search className="headerItem" query={query} setQuery={setQuery} />
               <div className="right-aligned">
+                <GoToFavsButton displayFavAnime={displayFavAnime} className="headerItem"/>
                 <SearchButton fetchAnime={fetchAnime} className="headerItem"/>
               </div>            
           </Nav>
@@ -71,6 +90,7 @@ function App() {
       </Navbar>
         <Routes>
           <Route path="/" element={<Home animeList={animeList} onSelectAnime={selectedAnime} />} />
+          <Route path="/Favorites" element={<Favorites animeList={animeList} onSelectAnime={selectedAnime} />} />
           <Route path="/AnimeItemPage" element={<AnimeItemPage anime={currentlySelectedAnime} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

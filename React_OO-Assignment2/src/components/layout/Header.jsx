@@ -3,7 +3,7 @@
 import Container from "react-bootstrap/Container";
 import { Navbar, Nav } from "react-bootstrap";
 import Search from '../../Search.jsx';
-import SearchButton from './searchButton.jsx';
+import SearchButton from './SearchButton.jsx';
 
 const Header = () => {
   return (

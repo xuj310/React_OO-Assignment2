@@ -4,7 +4,7 @@ export default function AnimeList({animeList, onSelectAnime}) {
   return (
     <ul className='list'>
       {animeList.map((anime) => (
-        <AnimeItem anime={anime} key={anime.title} onSelectAnime={onSelectAnime} />
+        <AnimeItem anime={anime} onSelectAnime={onSelectAnime} />
       ))}
     </ul>
   );
