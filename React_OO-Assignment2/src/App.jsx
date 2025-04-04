@@ -10,6 +10,7 @@ import SearchButton from './components/layout/SearchButton.jsx';
 import GoToFavsButton from './components/layout/GoToFavsButton.jsx';
 import AnimeItemPage from './AnimeItemPage.jsx';
 import Favorites from './Favorites.jsx';
+import ThemeChangeButton from './components/layout/ThemeChangeButton.jsx';
 
 function App() {
 
@@ -86,6 +87,7 @@ function App() {
           <Nav>
               <Search className="headerItem" query={query} setQuery={setQuery} />
               <div className="right-aligned">
+                <ThemeChangeButton displayFavAnime={displayFavAnime} className="headerItem"/>
                 <GoToFavsButton displayFavAnime={displayFavAnime} className="headerItem"/>
                 <SearchButton fetchAnime={fetchAnime} className="headerItem"/>
               </div>            

@@ -6,12 +6,14 @@
     .right-aligned {
       display: flex;
       justify-content: space-evenly;
+      
       cursor: pointer;
     }
 
     .headerItem {
         font-size: 1.5rem;
         letter-spacing: 0.2rem;
+        margin: 5px;
       }
     
     a {
