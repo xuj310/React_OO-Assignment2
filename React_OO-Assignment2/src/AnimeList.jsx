@@ -10,6 +10,5 @@ export default function AnimeList({message, animeList, onSelectAnime}) {
           ))}
         </ul>
     </div>
-    
   );
 }

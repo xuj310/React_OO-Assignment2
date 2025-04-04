@@ -1,8 +1,6 @@
 // Use of modules
 @use './colours' as colours;
 @use './components/layout/header' as *;
-@use './infoBox' as *;
-
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
