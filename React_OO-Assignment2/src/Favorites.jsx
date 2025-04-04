@@ -8,9 +8,7 @@ const Favorites = ({animeList, onSelectAnime}) => {
   return (
     <Fragment>
       <Container>
-      <div className="box">
-          <AnimeList animeList={animeList} onSelectAnime={onSelectAnime} />
-          </div>
+        <AnimeList animeList={animeList} onSelectAnime={onSelectAnime} />
       </Container>
     </Fragment>
   )
