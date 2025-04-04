@@ -6,9 +6,7 @@ const AnimeItemPage = ({anime}) => {
   return (
     <Fragment>
       <Container>
-      <div className="box">
-          <AnimeItemFull anime={anime} />
-          </div>
+        <AnimeItemFull anime={anime} />
       </Container>
     </Fragment>
   )

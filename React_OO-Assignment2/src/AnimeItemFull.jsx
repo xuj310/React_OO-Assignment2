@@ -13,7 +13,7 @@ export default function AnimeItemFull({ anime }) {
         <FavButton favAnime={anime.anime}/>
       </li>
     ) : (
-      <h3>Anime data is not available.</h3>
+      <h3>Anime data is not available. Try searching again.</h3>
     )}
   </div>
   );
