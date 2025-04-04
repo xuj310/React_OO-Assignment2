@@ -47,7 +47,7 @@ function App() {
       setMessage("Your search query was empty");
     else
     {
-      setMessage("");
+      setMessage("Fetching results...");
       try {
         const response = await fetch(
           `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=~${query}`, {credentials: "omit"}
