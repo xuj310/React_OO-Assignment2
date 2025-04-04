@@ -34,8 +34,6 @@ export default function FavButton({favAnime}) {
         }
     }
 
-    
-
     return (
         <Button className="headerItem" onClick={handleFavAnime} variant="outline-light">{buttonText}</Button>
     );

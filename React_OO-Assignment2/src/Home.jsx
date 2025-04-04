@@ -4,12 +4,12 @@ import { Fragment } from 'react';
 import Container from 'react-bootstrap/Container';
 import AnimeList from './AnimeList';
 
-const Home = ({animeList, onSelectAnime}) => {
+const Home = ({message, animeList, onSelectAnime}) => {
   return (
     <Fragment>
       <Container>
-      <div className="box">
-          <AnimeList animeList={animeList} onSelectAnime={onSelectAnime} />
+      <div>
+          <AnimeList message={message} animeList={animeList} onSelectAnime={onSelectAnime} />
           </div>
       </Container>
     </Fragment>
