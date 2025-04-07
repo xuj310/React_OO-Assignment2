@@ -1,6 +1,6 @@
 import FavButton from './components/layout/FavButton.jsx';
 
-// Code for displaying the full detail of a result
+// Code for displaying the full detail of an anime
 export default function AnimeItemFull({ anime }) {
   
   return (

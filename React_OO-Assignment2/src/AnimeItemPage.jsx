@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import Container from 'react-bootstrap/Container';
 import AnimeItemFull from './AnimeItemFull';
 
-// Page for displaying an item
+// Page for displaying an anime
 const AnimeItemPage = ({anime}) => {
   return (
     <Fragment>

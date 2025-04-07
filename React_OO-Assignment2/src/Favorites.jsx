@@ -1,4 +1,4 @@
-// The home/landing page
+// The favorites page
 
 import { Fragment } from 'react';
 import Container from 'react-bootstrap/Container';

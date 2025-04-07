@@ -22,40 +22,49 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Set the selected anime and navigate to to the page to display the anime
   function selectedAnime(anime) {
     setSelectedAnime(anime);
     navigate('/AnimeItemPage');
   }
 
+  // Display the favorites in the current page
   const displayFavAnime = () => {
     setMessage("");
     // Retrieve existing favorites from localStorage
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [' '];
     setAnimeList(favorites);
+    // Navigate back to the root
     navigate('/');
 }
 
+  // Look up anime using 'Anime News Network'
   async function fetchAnime() {
 
+    // Navigate back to the root page
     if (location.pathname != '/')
     {
       navigate('/');
     }
 
+    // Clear any existing list
     setAnimeList([])
 
+    // Input validation to ensure the user is not sending an empty query
     if (query.trim() == "") 
       setMessage("Your search query was empty");
     else
     {
       setMessage("Fetching results...");
       try {
+        // Perform the query
         const response = await fetch(
           `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=~${query}`, {credentials: "omit"}
         );
         const returnData = await response.text();
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(returnData, 'application/xml');
+        /* Generate the list of query results. The API returns an xml that needs to be parsed for the appropriate information  */
         const animeList = Array.from(xmlDoc.getElementsByTagName('anime')).map((anime) => {
           const title = anime.getAttribute('name'); // Get the title 
           const plotSummary = Array.from(anime.getElementsByTagName('info')).find(
@@ -80,6 +89,7 @@ function App() {
     
   }
 
+  // The Navbar represents the header bar and what's in it
   return (
     <>
       <Navbar bg='dark' variant='dark'>

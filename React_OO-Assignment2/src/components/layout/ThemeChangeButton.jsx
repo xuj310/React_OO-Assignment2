@@ -11,6 +11,7 @@ export default function ThemeChangeButton() {
         document.documentElement.setAttribute("data-bs-theme", theme);
     }, [theme]);
 
+    // Button that swaps the theme
     return (
         <Button className="headerItem" 
             variant="outline-light" 

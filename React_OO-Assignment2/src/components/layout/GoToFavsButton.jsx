@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import React from 'react';
 
-// Code for going to favorites page
+// Button for going to the favorites page
 export default function GoToFavsButton({displayFavAnime}) {
 
     return (

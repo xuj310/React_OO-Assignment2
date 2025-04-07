@@ -1,5 +1,6 @@
 import AnimeItem from "./animeItem";
 
+// Search/Favorites results list
 export default function AnimeList({message, animeList, onSelectAnime}) {
   return (
     <div className='list'>
