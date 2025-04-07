@@ -1,7 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import React, { useEffect, useState } from 'react';
 
-// Functionality for favoriting items
+/* 
+   Functionality for favoriting items
+   favAnime - The favorited anime that has been selected
+*/
 
 export default function FavButton({favAnime}) {
 
