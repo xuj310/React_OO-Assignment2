@@ -12,6 +12,11 @@ import AnimeItemPage from './AnimeItemPage.jsx';
 import Favorites from './Favorites.jsx';
 import ThemeChangeButton from './components/layout/ThemeChangeButton.jsx';
 
+// Input validation to ensure the user is not sending an empty query
+export function validateQuery(query) {
+  return query.trim() === "" ? false : true;
+}
+
 function App() {
 
   const [query, setQuery] = useState('');
@@ -36,7 +41,7 @@ function App() {
     setAnimeList(favorites);
     // Navigate back to the root
     navigate('/');
-}
+  }
 
   // Look up anime using 'Anime News Network'
   async function fetchAnime() {
@@ -49,12 +54,11 @@ function App() {
 
     // Clear any existing list
     setAnimeList([])
-
-    // Input validation to ensure the user is not sending an empty query
-    if (query.trim() == "") 
+    
+    if (!validateQuery(query)) {
       setMessage("Your search query was empty");
-    else
-    {
+    }
+    else {
       setMessage("Fetching results...");
       try {
         // Perform the query
