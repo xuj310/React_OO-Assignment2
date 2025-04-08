@@ -40,7 +40,7 @@ function App() {
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setAnimeList(favorites);
     // Navigate back to the root
-    navigate('/');
+    navigate('/Favorites');
   }
 
   // Look up anime using 'Anime News Network'
