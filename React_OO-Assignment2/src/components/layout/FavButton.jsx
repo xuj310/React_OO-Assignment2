@@ -17,7 +17,7 @@ export default function FavButton({favAnime}) {
     // Logic for adding or removing favorite
     const handleFavAnime = () => {
         // Get favorites from the localStorage
-        const favorites = JSON.parse(localStorage.getItem("favorites")) || [' '];
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
         // Check if the anime title is already favorited
         const index = favorites.findIndex(item => item.title === favAnime.title);
         if (index !== -1) {

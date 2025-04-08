@@ -37,7 +37,7 @@ function App() {
   const displayFavAnime = () => {
     setMessage("");
     // Retrieve existing favorites from localStorage
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [' '];
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setAnimeList(favorites);
     // Navigate back to the root
     navigate('/');
