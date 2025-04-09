@@ -2,8 +2,8 @@ import Button from 'react-bootstrap/Button';
 import React from 'react';
 
 /* 
-   Button for going to the favorites page
-   displayFavAnime - Function in App.jsx that goes to the favorites page
+   Button for the going home button
+   goHome - function for going back to the home page
 */
 export default function GoHomeButton({goHome}) {
 
