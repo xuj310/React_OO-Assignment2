@@ -23,14 +23,18 @@ export default function FavButton({favAnime}) {
         // Check if the anime title is already favorited
         const index = favorites.findIndex(item => item.title === favAnime.title);
         if (index !== -1) {
-            favorites.splice(index, 1); // Remove the existing item
-            navigate('/Favorites');
+            favorites.splice(index, 1); // Remove the existing item      
+            if (window.location.pathname === '/Favorites') {
+                navigate('/Favorites');
+            }
+            else {
+                setButtonText('Favorite ⭐');   
+            }
         } else {
             favorites.push(favAnime); // Add the new item
             setButtonText('Unfavorite ❎');
         }
         localStorage.setItem("favorites", JSON.stringify(favorites));
-        
     }
 
     /*  Check if the current item has already been favorited or not. We do this to figure out what to display for the favorites button */
