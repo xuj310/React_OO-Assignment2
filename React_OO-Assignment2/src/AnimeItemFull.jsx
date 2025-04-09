@@ -10,11 +10,11 @@ export default function AnimeItemFull({ anime }) {
     <div className="anime-card">
     {anime ? (
       <li>
-        <img src={anime.anime.coverImage}/>
-        <h3>{anime.anime.title}</h3>
-        <p>Aired: {anime.anime.airingDate}</p>
-        <p>{anime.anime.plotSummary}</p>
-        <FavButton favAnime={anime.anime}/>
+        <img src={anime.coverImage}/>
+        <h3>{anime.title}</h3>
+        <p>Aired: {anime.airingDate}</p>
+        <p>{anime.plotSummary}</p>
+        <FavButton favAnime={anime}/>
       </li>
     ) : (
       <h3>Anime data is not available. Try searching again.</h3>

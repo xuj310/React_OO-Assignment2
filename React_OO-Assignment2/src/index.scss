@@ -81,6 +81,7 @@
       letter-spacing: 0.20px; // Adds spacing between letters
     }
   }
+  
   .list {
     padding: 1rem;
     li:hover {
@@ -99,9 +100,22 @@
     border-bottom: 1px solid colours.$hovor-colour;
   }
 
+  .list .infoRow {
+    display: grid;
+    align-self: center;
+    cursor: pointer;
+  }
+
   .list img {
     width: 100%;
     grid-row: 1 / -1;
+  }
+
+  .list .favButton {
+    grid-column: 3;  /* Ensures it sits below the title */
+    align-self: center; /* Centers it vertically */
+    justify-self: start; /* Ensures it aligns left with text */
+    padding: 0.5rem;
   }
   
   .list h3 {

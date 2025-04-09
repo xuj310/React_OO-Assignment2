@@ -8,11 +8,20 @@ import AnimeList from './AnimeList';
     animeList - The list of anime returned
     onSelectanime - selectedAnime() function in App.jsx that goes a different plage to display the full details for an anime
 */
+
+// Logic for adding or removing favorite
+const handleFavAnime = () => {
+  // Get favorites from the localStorage
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  return favorites;
+}
+
 const Favorites = ({animeList, onSelectAnime}) => {
   return (
     <Fragment>
       <Container>
-        <AnimeList animeList={animeList} onSelectAnime={onSelectAnime} />
+        <AnimeList animeList={handleFavAnime()} onSelectAnime={onSelectAnime} />
       </Container>
     </Fragment>
   )

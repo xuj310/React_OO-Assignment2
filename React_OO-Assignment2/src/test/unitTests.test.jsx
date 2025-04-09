@@ -20,10 +20,10 @@ describe('Function Unit Tests', () => {
     render(<ThemeChangeButton />);
     const button = screen.getByRole('button');
     // Initial state
-    expect(button.textContent).to.equal("⚪ Theme");
+    expect(button.textContent).to.equal("☀️ Theme");
     // Simulate a click
     fireEvent.click(button);
     // After clicking, theme should change
-    expect(button.textContent).to.equal("⚫ Theme");
+    expect(button.textContent).to.equal("🌙 Theme");
   });
 });

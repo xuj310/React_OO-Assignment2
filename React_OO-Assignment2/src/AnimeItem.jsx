@@ -1,4 +1,5 @@
 import React from 'react';
+import FavButton from './components/layout/FavButton.jsx';
 
 /* 
    This represents each returned result from a search of favorites list. 
@@ -9,10 +10,18 @@ import React from 'react';
 */
 export default function AnimeItem({ anime, onSelectAnime }) {
   return (
-    <li onClick={() => onSelectAnime({anime})}>
-      <img src={anime.coverImage}/>
-      <h3>{anime.title}</h3>
-      <p>Aired: {anime.airingDate}</p>
-    </li>
+    <div className='animeItem'>
+      <li>
+        <img src={anime.coverImage}/>
+        <div className='infoRow' onClick={() => onSelectAnime(anime)}>
+        <h3>{anime.title}</h3>
+        <p>Aired: {anime.airingDate}</p>
+        </div>
+        <div className='favButton' >
+          <FavButton favAnime={anime}/> 
+        </div>
+      </li>
+      
+    </div>
   );
 }

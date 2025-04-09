@@ -16,7 +16,7 @@ export default function ThemeChangeButton() {
         <Button className="headerItem" 
             variant="outline-light" 
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}> 
-            {theme == "dark" ? "⚪ Theme" : "⚫ Theme"}
+            {theme == "dark" ? "☀️ Theme" : "🌙 Theme"}
         </Button>
     );
   }

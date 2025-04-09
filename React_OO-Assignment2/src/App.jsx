@@ -11,6 +11,7 @@ import Favorites from './Favorites.jsx';
 import FrontPage from './FrontPage.jsx';
 import ThemeChangeButton from './components/layout/ThemeChangeButton.jsx';
 import GoHomeButton from './components/layout/GoHomeButton.jsx';
+import LogoIcon from './components/layout/LogoIcon.jsx';
 
 // Input validation to ensure the user is not sending an empty query
 export function validateQuery(query) {
@@ -99,10 +100,11 @@ function App() {
       <Navbar bg='dark' variant='dark'>
       <Container>
           <Nav>   
-              <GoHomeButton goHome={goHome} />
+              <LogoIcon/>
               <div className="right-aligned">
                 <ThemeChangeButton displayFavAnime={displayFavAnime} className="headerItem"/>
                 <GoToFavsButton displayFavAnime={displayFavAnime} className="headerItem"/>
+                <GoHomeButton goHome={goHome} />
               </div>            
           </Nav>
       </Container>
