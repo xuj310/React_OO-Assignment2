@@ -15,7 +15,7 @@
 
   .search::placeholder {
     font-size: 20px;
-}
+  }
   .infoMessage{
     text-align: center;
   }
@@ -24,6 +24,29 @@
     display: flex;
     justify-content: center;
     margin: 20px;
+  }
+
+  .welcome-box {
+    max-width: 900px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    list-style-type: none;
+    font-size: 1.5rem;
+    margin: 5px;
+
+    h3 {
+      font-size: 3rem;
+    }
+
+    li {
+      display: flex;
+      gap: 10px; // Adds space between the elements
+      justify-content: center; // Centers horizontally
+      align-items: center; // Aligns them vertically
+      padding: 15px
+    }
   }
 
   .anime-card {

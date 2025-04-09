@@ -3,7 +3,7 @@
 import { Fragment } from 'react';
 import Container from 'react-bootstrap/Container';
 
-const Home = () => {
+const NotFound = () => {
   return (
     <Fragment>
       <Container>
@@ -14,4 +14,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default NotFound

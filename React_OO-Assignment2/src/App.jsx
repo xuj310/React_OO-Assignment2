@@ -1,16 +1,16 @@
 // Routes
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import Home from './Home';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Results from './Results.jsx';
 import NotFound from './NotFound';
 import { Navbar, Nav } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import Search from './Search.jsx';
 import { useState } from 'react';
-import SearchButton from './components/layout/SearchButton.jsx';
 import GoToFavsButton from './components/layout/GoToFavsButton.jsx';
 import AnimeItemPage from './AnimeItemPage.jsx';
 import Favorites from './Favorites.jsx';
+import FrontPage from './FrontPage.jsx';
 import ThemeChangeButton from './components/layout/ThemeChangeButton.jsx';
+import GoHomeButton from './components/layout/GoHomeButton.jsx';
 
 // Input validation to ensure the user is not sending an empty query
 export function validateQuery(query) {
@@ -25,12 +25,16 @@ function App() {
   const [message, setMessage] = useState('');
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   // Set the selected anime and navigate to to the page to display the anime
   function selectedAnime(anime) {
     setSelectedAnime(anime);
     navigate('/AnimeItemPage');
+  }
+
+  // Returns to the home page
+  function goHome() {
+    navigate('/');
   }
 
   // Display the favorites in the current page
@@ -46,11 +50,7 @@ function App() {
   // Look up anime using 'Anime News Network'
   async function fetchAnime() {
 
-    // Navigate back to the root page
-    if (location.pathname != '/')
-    {
-      navigate('/');
-    }
+    navigate('/Results');
 
     // Clear any existing list
     setAnimeList([])
@@ -98,19 +98,19 @@ function App() {
     <>
       <Navbar bg='dark' variant='dark'>
       <Container>
-          <Nav>
-              <Search className="headerItem" query={query} setQuery={setQuery} />
+          <Nav>   
+              <GoHomeButton goHome={goHome} />
               <div className="right-aligned">
                 <ThemeChangeButton displayFavAnime={displayFavAnime} className="headerItem"/>
                 <GoToFavsButton displayFavAnime={displayFavAnime} className="headerItem"/>
-                <SearchButton fetchAnime={fetchAnime} className="headerItem"/>
               </div>            
           </Nav>
       </Container>
 
       </Navbar>
         <Routes>
-          <Route path="/" element={<Home message={message} animeList={animeList} onSelectAnime={selectedAnime} />} />
+          <Route path="/" element={<FrontPage query={query} setQuery={setQuery} fetchAnime={fetchAnime}/>} />
+          <Route path="/Results" element={<Results message={message} animeList={animeList} onSelectAnime={selectedAnime} />} />
           <Route path="/Favorites" element={<Favorites animeList={animeList} onSelectAnime={selectedAnime} />} />
           <Route path="/AnimeItemPage" element={<AnimeItemPage anime={currentlySelectedAnime} />} />
           <Route path="*" element={<NotFound />} />
