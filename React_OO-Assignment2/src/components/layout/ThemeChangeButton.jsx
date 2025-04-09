@@ -2,9 +2,10 @@ import Button from 'react-bootstrap/Button';
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-// Button for changing themes. We change the Bootstrap theme for Light/Dark theme
+// Button for changing themes. We change the Bootstrap theme for Light/Dark theme.
 export default function ThemeChangeButton() {
 
+    // Store the theme in localStorage so it can persist through browser refreshes.
     const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
 
     const setCurrentTheme = (theme) => {
@@ -14,7 +15,6 @@ export default function ThemeChangeButton() {
     const getCurrentTheme = () => {
         return localStorage.getItem("theme") || [];
     }
-
 
     useEffect(() => {
         document.documentElement.setAttribute("data-bs-theme", getCurrentTheme());

@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 /* 
    Functionality for favoriting items
@@ -23,7 +23,8 @@ export default function FavButton({favAnime}) {
         // Check if the anime title is already favorited
         const index = favorites.findIndex(item => item.title === favAnime.title);
         if (index !== -1) {
-            favorites.splice(index, 1); // Remove the existing item      
+            favorites.splice(index, 1); // Remove the existing item    
+            // Refresh the page only if we're already in the favorites page. Otherwise just remove the favorite and stay where we are.  
             if (window.location.pathname === '/Favorites') {
                 navigate('/Favorites');
             }
