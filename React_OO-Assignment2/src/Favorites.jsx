@@ -17,7 +17,7 @@ const handleFavAnime = () => {
   return favorites;
 }
 
-const Favorites = ({animeList, onSelectAnime}) => {
+const Favorites = ({onSelectAnime}) => {
   return (
     <Fragment>
       <Container>

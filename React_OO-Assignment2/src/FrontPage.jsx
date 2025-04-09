@@ -6,9 +6,9 @@ import Search from './Search.jsx';
 import SearchButton from './components/layout/SearchButton.jsx';
 
 /*
-    message - Info message to display to the user. This will be the amount of anime returned
-    animeList - The list of anime returned
-    onSelectanime - selectedAnime() function in App.jsx that goes a different plage to display the full details for an anime
+    query - The current query
+    setQuery - set the Query
+    fetchAnime - fetch the anime from the api based on the query
 */
 
 const FrontPage = ({query, setQuery, fetchAnime}) => {

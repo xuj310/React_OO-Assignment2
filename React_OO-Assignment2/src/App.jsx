@@ -113,7 +113,7 @@ function App() {
         <Routes>
           <Route path="/" element={<FrontPage query={query} setQuery={setQuery} fetchAnime={fetchAnime}/>} />
           <Route path="/Results" element={<Results message={message} animeList={animeList} onSelectAnime={selectedAnime} />} />
-          <Route path="/Favorites" element={<Favorites animeList={animeList} onSelectAnime={selectedAnime} />} />
+          <Route path="/Favorites" element={<Favorites onSelectAnime={selectedAnime} />} />
           <Route path="/AnimeItemPage" element={<AnimeItemPage anime={currentlySelectedAnime} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
